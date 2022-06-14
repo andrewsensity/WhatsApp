@@ -5,18 +5,11 @@ import androidx.camera.core.ImageCapture
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.sistecredito.whatsapp.data.CameraUIAction
 import com.sistecredito.whatsapp.util.Util.getCameraProvider
@@ -41,7 +34,6 @@ fun CameraPreviewView(
         .requireLensFacing(cameraPosition)
         .build()
     var cameraProvider: ProcessCameraProvider?
-    val scope = rememberCoroutineScope()
     LaunchedEffect(cameraPosition) {
         cameraProvider = context.getCameraProvider()
         cameraProvider!!.unbindAll()
@@ -61,6 +53,5 @@ fun CameraPreviewView(
         cameraInfo.cameraControl.enableTorch(cameraInfo.cameraInfo.hasFlashUnit())
         preview.setSurfaceProvider(previewView.surfaceProvider)
     }
-        AndroidView(factory = { previewView }, modifier = Modifier.fillMaxSize()) { }
-
+    AndroidView(factory = { previewView }, modifier = Modifier.fillMaxSize()) { }
 }

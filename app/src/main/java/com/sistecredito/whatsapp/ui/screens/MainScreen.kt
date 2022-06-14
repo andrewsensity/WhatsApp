@@ -17,7 +17,7 @@ import com.sistecredito.whatsapp.ui.screens.components.TabsContent
 fun MainScreen(
     navController: NavController
 ) {
-    val pagerState = rememberPagerState(initialPage = 0)
+    val pagerState = rememberPagerState(initialPage = 1)
     Column {
         Tabs(state = pagerState)
         TabsContent(
